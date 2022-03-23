@@ -225,31 +225,32 @@ const Home = ({ urlBase, people, setPeople }) => {
           <img className="home-img" src={Workout} alt="family-workout" />
         </div>
       </div>
-          <Modal show={errorShow} onHide={handleErrorClose}>
-            <Modal.Header>
-              <Modal.Title>
-                That email is already in use. Please try again with a different
-                email.
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleErrorClose}>
-                Close
-              </Button>
-            </Modal.Footer>
-          </Modal>
-          <Modal show={submitShow} onHide={handleSubmitClose}>
-            <Modal.Header>
-              <Modal.Title>
-                Your account is created! Add activities using the Daily Tracker, or check out your progress on My Health!
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleSubmitClose}>
-                Close
-              </Button>
-            </Modal.Footer>
-          </Modal>
+      <Modal show={errorShow} onHide={handleErrorClose}>
+        <Modal.Header>
+          <Modal.Title>
+            That email is already in use. Please try again with a different
+            email.
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleErrorClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Modal show={submitShow} onHide={handleSubmitClose}>
+        <Modal.Header>
+          <Modal.Title>
+            Your account is created! Add activities using the Daily Tracker, or
+            check out your progress on My Health!
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleSubmitClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
