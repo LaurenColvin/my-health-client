@@ -1,3 +1,4 @@
+
 .home-h2 {
   margin: 0 auto;
   text-align: center;
@@ -17,23 +18,35 @@
 }
 
 @media only screen and (min-width: 768px) {
+
+  .home-h2 {
+    margin: -20px auto;
+    text-align: center;
+  }
+  
+  .home-form {
+    margin: 0 20px;
+  }
+
   .home-img {
-    margin-top: 100px;
-    height: 15rem;
-    width: 25rem;
+    margin-top: 20px;
+    /* height: 15rem; */
+    height: auto;
+    width: 35rem;
     margin-left: 45%;
   }
   .person-input.form-control {
     width: 18rem;
-    margin: 0 auto;
   }
 }
 
 @media only screen and (min-width: 1024px) {
+
   .home-img {
-    margin-top: 100px;
-    height: 25rem;
-    width: 35rem;
+    margin-top: 20px;
+    /* height: 25rem; */
+    width: 50rem;
+    height: auto;
     margin-left: 38%;
   }
 
