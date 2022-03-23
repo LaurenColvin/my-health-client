@@ -1,10 +1,32 @@
 import { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Modal } from "react-bootstrap";
 import "./DailyTracker.css";
 
 
 const DailyTracker = ({ urlBase, people, setPeople }) => {
-  const [verification, setVerification] = useState(false);
+
+  ////////////////// EMAIL VERIFICATION AND ALERT MODAL IF ALREADY IN USE //////////////////
+
+const [errorShow, setErrorShow] = useState(false);
+const [submitShow, setSubmitShow] = useState(false);
+
+const handleErrorClose = () => {
+  setErrorShow(false);
+  emptyForm();
+};
+const handleErrorShow = () => setErrorShow(true);
+const handleSubmitShow = () => setSubmitShow(true);
+const handleSubmitClose = () => setSubmitShow(false);
+
+const emptyForm = (event) => {
+  setEmail("");
+  setExercise("");
+  setLength("");
+  setDate("");
+};
+
+  ////////////////// USE STATE FOR FORM INPUT /////////////////////
+
   const [personLength, setPersonLength] = useState(0);
   const [email, setEmail] = useState("");
   const [personId, setPersonId] = useState("");
@@ -13,6 +35,30 @@ const DailyTracker = ({ urlBase, people, setPeople }) => {
   const [length, setLength] = useState("");
   const [intensity, setIntensity] = useState("");
   const [allActivities, setAllActivities] = useState([]);
+
+  const dateHandleChange = (event) => {
+    event.preventDefault();
+    setDate(event.target.value);
+  };
+
+  const activityHandleChange = (event) => {
+    event.preventDefault();
+    setExercise(event.target.value);
+  };
+
+  const lengthHandleChange = (event) => {
+    event.preventDefault();
+    setLength(event.target.value);
+  };
+
+  const intensityHandleChange = (event) => {
+    event.preventDefault();
+    setIntensity(event.target.value);
+  };
+
+
+    ////////////////// CHECK EMAIL FOR PUT METHOD /////////////////////
+
 
   const emailHandleChange = (event) => {
     event.preventDefault();
@@ -43,32 +89,12 @@ const DailyTracker = ({ urlBase, people, setPeople }) => {
       .then((data) => console.log(data));
   };
 
-  const dateHandleChange = (event) => {
-    event.preventDefault();
-    setDate(event.target.value);
-  };
-
-  const activityHandleChange = (event) => {
-    event.preventDefault();
-    setExercise(event.target.value);
-  };
-
-  const lengthHandleChange = (event) => {
-    event.preventDefault();
-    setLength(event.target.value);
-  };
-
-  const intensityHandleChange = (event) => {
-    event.preventDefault();
-    setIntensity(event.target.value);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     if (personLength === 0) {
-      setVerification(true);
+      handleErrorShow();
     } else {
-      setVerification(false);
+      handleSubmitShow();
       let data = {
         date: date,
         exercise: exercise,
@@ -95,6 +121,10 @@ const DailyTracker = ({ urlBase, people, setPeople }) => {
     }
   };
 
+
+  ////////////////// HTML FOR FORM AND MODAL //////////////////
+
+
   return (
     <div className="daily-tracker-body">
       <h2 className="daily-h2"> Welcome to the Daily Tracker</h2>
@@ -109,7 +139,7 @@ const DailyTracker = ({ urlBase, people, setPeople }) => {
         >
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>
-              <h5>Email</h5>
+              <h5 className="label" >Email</h5>
             </Form.Label>
             <Form.Control
               onChange={emailHandleChange}
@@ -123,7 +153,7 @@ const DailyTracker = ({ urlBase, people, setPeople }) => {
 
           <Form.Group className="mb-3" controlId="formBasicDate">
             <Form.Label>
-              <h5>Date</h5>
+              <h5 className="label">Date</h5>
             </Form.Label>
             <Form.Control
               onChange={dateHandleChange}
@@ -140,7 +170,7 @@ const DailyTracker = ({ urlBase, people, setPeople }) => {
             controlId="formBasicDropdown"
           >
             <Form.Label>
-              <h5>What activity did you do?</h5>
+              <h5 className="label">What activity did you do?</h5>
             </Form.Label>
             <Form.Select
               onChange={activityHandleChange}
@@ -202,7 +232,7 @@ const DailyTracker = ({ urlBase, people, setPeople }) => {
 
           <Form.Group className="mb-3" controlId="formBasicLength">
             <Form.Label>
-              <h5>Duration</h5>
+              <h5 className="label">Duration</h5>
             </Form.Label>
             <Form.Control
               onChange={lengthHandleChange}
@@ -216,7 +246,7 @@ const DailyTracker = ({ urlBase, people, setPeople }) => {
 
           <Form.Group className="mb-3" controlId="formBasicIntensity">
             <Form.Label>
-              <h5>How intense was your activity?</h5>{" "}
+              <h5 className="label">How intense was your activity?</h5>{" "}
             </Form.Label>
             <Form.Select
               onChange={intensityHandleChange}
@@ -266,16 +296,31 @@ const DailyTracker = ({ urlBase, people, setPeople }) => {
             Submit
           </Button>
         </Form>
-        {verification === false ? (
-          <div></div>
-        ) : (
-          <div className="unverified">
-            <h1>
-              We do not have record of your email. Please create an account to
+        <Modal show={errorShow} onHide={handleErrorClose}>
+        <Modal.Header>
+          <Modal.Title>
+            We do not have record of your email. Please create an account on the homepage to
               continue.
-            </h1>
-          </div>
-        )}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleErrorClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Modal show={submitShow} onHide={handleSubmitClose}>
+        <Modal.Header>
+          <Modal.Title>
+            Your activity has been logged! Check out your My Health page to see all your data!
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleSubmitClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
       </div>
     </div>
   );
