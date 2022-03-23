@@ -8,6 +8,7 @@ import Home from "./Components/Home/Home";
 import AboutTeam from "./Components/AboutTeam/AboutTeam";
 import MyHealth from "./Components/MyHealth/MyHealth";
 import DailyTracker from "./Components/DailyTracker/DailyTracker";
+import ScrollTop from "./Components/ScrollTop/ScrollTop";
 
 function App() {
   const urlBase = apiUrl;
@@ -24,36 +25,38 @@ function App() {
       <Header />
 
       <main>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home urlBase={urlBase} people={people} setPeople={setPeople} />
-            }
-          />
-          <Route path="/home" element={<Navigate to="/" />} />
-          <Route path="/about-team" element={<AboutTeam />} />
-          <Route
-            path="/daily-tracker"
-            element={
-              <DailyTracker
-                urlBase={urlBase}
-                people={people}
-                setPeople={setPeople}
-              />
-            }
-          />
-          <Route
-            path="/my-health"
-            element={
-              <MyHealth
-                urlBase={urlBase}
-                people={people}
-                setPeople={setPeople}
-              />
-            }
-          />
-        </Routes>
+        <ScrollTop>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home urlBase={urlBase} people={people} setPeople={setPeople} />
+              }
+            />
+            <Route path="/home" element={<Navigate to="/" />} />
+            <Route path="/about-team" element={<AboutTeam />} />
+            <Route
+              path="/daily-tracker"
+              element={
+                <DailyTracker
+                  urlBase={urlBase}
+                  people={people}
+                  setPeople={setPeople}
+                />
+              }
+            />
+            <Route
+              path="/my-health"
+              element={
+                <MyHealth
+                  urlBase={urlBase}
+                  people={people}
+                  setPeople={setPeople}
+                />
+              }
+            />
+          </Routes>
+        </ScrollTop>
       </main>
 
       <Footer />
