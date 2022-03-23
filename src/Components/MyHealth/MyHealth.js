@@ -28,9 +28,8 @@ export default function MyHealth({ urlBase, people, setPeople }) {
   };
 
   return (
-    <>
+    <div className="my-health-container">
       <h3 className="health-h3">My Health Page</h3>
-      {/* returning profile list of the user */}
       <Form onSubmit={handleSubmit} className="health-form">
         <div className="email">
           <Form.Control
@@ -46,13 +45,7 @@ export default function MyHealth({ urlBase, people, setPeople }) {
       {user.length === 0 ? (
         <div></div>
       ) : (
-        <div className="user-profile">
-          <ul>
-            {" "}
-            <li key={user._id}>Name : {user.firstName}</li>
-            <li>Age : {user.age}</li>
-            <li>Email : {user.email}</li>
-          </ul>
+        <div>
           <WeeklyView urlBase={urlBase} user={user} />
           <DailyView
             urlBase={urlBase}
@@ -61,6 +54,6 @@ export default function MyHealth({ urlBase, people, setPeople }) {
           />
         </div>
       )}
-    </>
+    </div>
   );
 }
