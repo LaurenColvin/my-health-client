@@ -1,44 +1,23 @@
 
-@media only screen and (max-width: 767px) {
-  .daily-h2 {
-    text-align: center;
-    margin-top: 30px;
-  }
+.daily-tracker-body {
+  margin: 0 20px;
+}
 
-  .tagline {
-    text-align: center;
-    margin: 0 auto;
-  }
-  .daily-tracker-form {
-    margin: 20px;
-  }
+.daily-h2 {
+  text-align: center;
+}
 
-  h5 {
-    margin-left: 10px;
-  }
+p.tagline {
+  text-align: center;
 }
 
 @media only screen and (min-width: 768px) {
-  .daily-h2 {
-    text-align: center;
-    margin-top: 30px;
-  }
+.daily-tracker-body {
+  margin: 0 30%;
+}
 
-  .tracker-form {
-    margin: 0 10%;
-  }
+.daily-tracker-form {
+  margin: 20px auto;
+}
 
-  .daily-form {
-    margin-top: 60px;
-    z-index: 1;
-  }
-
-  .daily-tracker-form {
-    width: 40rem;
-  }
-
-  .daily-btn {
-    margin-left: 18rem;
-  }
-
-} 
+}
