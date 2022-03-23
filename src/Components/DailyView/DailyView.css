@@ -19,10 +19,24 @@
 
 .btn-del {
   background-color: blueviolet;
+  width: 50%;
+  margin: 10px 20%;
 }
+
+.btn-update {
+  width: 50%;
+  margin: 10px 20%; 
+}
+
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .card {
     width: 45%;
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
   }
 }
