@@ -73,19 +73,20 @@ const DailyView = ({ urlBase, user, handleSubmit }) => {
         <p className="card-p">Exercise: {activity.exercise}</p>
         <p className="card-p">Length: {activity.length} minutes</p>
         <p className="card-p">Intensity: {activity.intensity}</p>
-        <Button className="btn-del" onClick={refreshPage} id={activity._id}>
-          Delete
-        </Button>
-        <Button onClick={showUpdate} id={activity._id}>
-          Update Activity
-        </Button>
+        <div className="btn-container">
+          <Button className="btn-del" onClick={refreshPage} id={activity._id}>
+            Delete
+          </Button>
+          <Button onClick={showUpdate} className="btn-update" id={activity._id}>
+            Update Activity
+          </Button>
+        </div>
       </Card>
     );
   });
 
   return (
     <div>
-      <h3 className="daily-h3">Daily Activity</h3>
       <div>{list}</div>
       {view === false ? (
         <div></div>
