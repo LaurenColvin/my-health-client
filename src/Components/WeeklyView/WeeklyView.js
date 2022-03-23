@@ -1,6 +1,7 @@
 //weeklyview
 
-import { Table } from "react-bootstrap";
+import { ProgressBar } from "react-bootstrap";
+import "./WeeklyView.css"
 
 const WeeklyView = ({ urlBase, user }) => {
   const activities = user.activity;
@@ -30,24 +31,11 @@ const WeeklyView = ({ urlBase, user }) => {
 
   return (
     <div className="weekly-view">
-      <h3 className="weekly-h3">Weekly Activity</h3>
-      <h4>
-        You exercised for {days} days : {hours} hr : {minutes} min
-      </h4>
-      <Table style={{ width: "18rem" }}>
-        <thead>
-          <tr>
-            <th>Activities</th>
-            <th>Average Intensity</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{list}</td>
-            <td>{avgIntensity}</td>
-          </tr>
-        </tbody>
-      </Table>
+      <h3>Weekly Data</h3>
+      <h4>Days Exercised this Month:</h4>
+      <ProgressBar className="progress" now={(days/30)*100} label={days} />
+      <h4>Average Intensity:</h4>
+      <ProgressBar now={avgIntensity*10} label={avgIntensity} />
     </div>
   );
 };
