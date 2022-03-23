@@ -1,10 +1,12 @@
 //home
 
 import { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Modal } from "react-bootstrap";
 import "./Home.css";
+import Workout from "../../assets/Workout-transparent.png";
 
 const Home = ({ urlBase, people, setPeople }) => {
+  ////////////////// USE STATE FOR FORM INPUT /////////////////////
   const [person, setPerson] = useState({
     firstName: "",
     lastName: "",
@@ -14,8 +16,6 @@ const Home = ({ urlBase, people, setPeople }) => {
     height: Number,
     mood: "",
   });
-
-  const [verification, setVerification] = useState(false);
 
   const handleChange = (event) => {
     event.persist();
@@ -28,14 +28,41 @@ const Home = ({ urlBase, people, setPeople }) => {
     });
   };
 
+  ////////////////// EMAIL VERIFICATION AND ALERT MODAL IF ALREADY IN USE //////////////////
+
+  const [errorShow, setErrorShow] = useState(false);
+  const [submitShow, setSubmitShow] = useState(false);
+
+  const handleErrorClose = () => {
+    setErrorShow(false);
+    emptyForm();
+  };
+  const handleErrorShow = () => setErrorShow(true);
+  const handleSubmitShow = () => setSubmitShow(true);
+  const handleSubmitClose = () => setSubmitShow(false);
+
+  const emptyForm = (event) => {
+    setPerson({
+      firstName: "",
+      lastName: "",
+      email: "",
+      age: Number,
+      weight: Number,
+      height: Number,
+      mood: "",
+    });
+  };
+
+  ////////////////// SUBMIT FUNCTION FOR FORM TO POST NEW USER //////////////////
+
   const handleSubmit = (event) => {
     event.preventDefault();
     let emails = people.map((person) => person.email);
     let check = emails.includes(person.email);
     if (check === true) {
-      setVerification(true);
+      handleErrorShow();
     } else {
-      setVerification(false);
+      handleSubmitShow();
       fetch(`${urlBase}/person`, {
         headers: {
           "Content-Type": "application/json",
@@ -59,6 +86,8 @@ const Home = ({ urlBase, people, setPeople }) => {
         );
     }
   };
+
+  ////////////////// HTML FOR FORM AND MODAL //////////////////
 
   return (
     <div className="home">
@@ -192,17 +221,35 @@ const Home = ({ urlBase, people, setPeople }) => {
             </Button>
           </Form>
         </div>
-      </div>
-      {verification === false ? (
-        <div></div>
-      ) : (
-        <div>
-          <h1>
-            That email is already in use. Please try again with a different
-            email.
-          </h1>
+        <div className="col-sm-3 ">
+          <img className="home-img" src={Workout} alt="family-workout" />
         </div>
-      )}
+      </div>
+          <Modal show={errorShow} onHide={handleErrorClose}>
+            <Modal.Header>
+              <Modal.Title>
+                That email is already in use. Please try again with a different
+                email.
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleErrorClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+          <Modal show={submitShow} onHide={handleSubmitClose}>
+            <Modal.Header>
+              <Modal.Title>
+                Your account is created! Add activities using the Daily Tracker, or check out your progress on My Health!
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleSubmitClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
     </div>
   );
 };
