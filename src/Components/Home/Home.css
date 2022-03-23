@@ -25,6 +25,7 @@
   }
   .person-input.form-control {
     width: 18rem;
+    margin: 0 auto;
   }
 }
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import "./DailyTracker.css";
-import Dumbbell from "../../assets/dumbell.png";
+
 
 const DailyTracker = ({ urlBase, people, setPeople }) => {
   const [verification, setVerification] = useState(false);
@@ -13,7 +13,6 @@ const DailyTracker = ({ urlBase, people, setPeople }) => {
   const [length, setLength] = useState("");
   const [intensity, setIntensity] = useState("");
   const [allActivities, setAllActivities] = useState([]);
-  const [lift, setLift] = useState();
 
   const emailHandleChange = (event) => {
     event.preventDefault();
@@ -93,7 +92,6 @@ const DailyTracker = ({ urlBase, people, setPeople }) => {
         .then(() => setExercise(""))
         .then(() => setDate(""))
         .then(() => setLength(""))
-        .then(() => lift());
     }
   };
 
@@ -278,14 +276,6 @@ const DailyTracker = ({ urlBase, people, setPeople }) => {
             </h1>
           </div>
         )}
-        <div className="dumbbell-container">
-          <img src={Dumbbell} alt="dumbbell" className="dumbbell-img" />
-        </div>
-      </div>
-
-      <div className="image-credit">
-        Image Credit: Author: sigit sulasmoko, Website:
-        https://pngtree.com/sigit-sulasmoko_14989530?type=1
       </div>
     </div>
   );

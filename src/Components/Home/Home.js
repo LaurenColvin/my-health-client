@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import "./Home.css";
-import Family from "../../assets/family.jpg";
 
 const Home = ({ urlBase, people, setPeople }) => {
   const [person, setPerson] = useState({
@@ -192,9 +191,6 @@ const Home = ({ urlBase, people, setPeople }) => {
               Submit
             </Button>
           </Form>
-        </div>
-        <div className="col-sm-3 ">
-          <img className="home-img" src={Family} alt="family-workout" />
         </div>
       </div>
       {verification === false ? (
