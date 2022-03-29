@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/my-health-client/static/css/main.f4ac9edc.css",
-    "main.js": "/my-health-client/static/js/main.6bd9e8a4.js",
+    "main.js": "/my-health-client/static/js/main.75efcb52.js",
     "static/media/anju.jpeg": "/my-health-client/static/media/anju.2e8473e77114b6249ec2.jpeg",
     "static/media/rebecca.jpeg": "/my-health-client/static/media/rebecca.4f8a5997edf6980c3aee.jpeg",
     "static/media/Workout-transparent.png": "/my-health-client/static/media/Workout-transparent.2a6f9fffa235dc6c9bf7.png",
@@ -10,10 +10,10 @@
     "static/media/AVENGEANCE-HEROIC-AVENGER-BI.ttf": "/my-health-client/static/media/AVENGEANCE-HEROIC-AVENGER-BI.360d1a60f575bb1476c8.ttf",
     "index.html": "/my-health-client/index.html",
     "main.f4ac9edc.css.map": "/my-health-client/static/css/main.f4ac9edc.css.map",
-    "main.6bd9e8a4.js.map": "/my-health-client/static/js/main.6bd9e8a4.js.map"
+    "main.75efcb52.js.map": "/my-health-client/static/js/main.75efcb52.js.map"
   },
   "entrypoints": [
     "static/css/main.f4ac9edc.css",
-    "static/js/main.6bd9e8a4.js"
+    "static/js/main.75efcb52.js"
   ]
 }
